@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="workspace">
+            <div class="intro">
+                <p class="eyebrow">Flask + SQLite</p>
+                <h1>API Login</h1>
+                <p>Cadastre, entre na conta e consulte o perfil usando token.</p>
+            </div>
+
+            <div class="status-panel">
+                <span class="status-dot"></span>
+                <div>
+                    <strong>Servidor online</strong>
+                    <span id="api-url">http://127.0.0.1:5000</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="control-grid">
+            <article class="panel">
+                <div class="panel-heading">
+                    <h2>Cadastro</h2>
+                    <span>POST /cadastro</span>
+                </div>
+
+                <form id="register-form" class="form-stack">
+                    <label>
+                        Nome
+                        <input name="name" type="text" placeholder="Kalleb" required>
+                    </label>
+                    <label>
+                        Email
+                        <input name="email" type="email" placeholder="kalleb@email.com" required>
+                    </label>
+                    <label>
+                        Senha
+                        <input name="password" type="password" placeholder="Minimo 6 caracteres" required>
+                    </label>
+                    <button type="submit">Criar usuario</button>
+                </form>
+            </article>
+
+            <article class="panel">
+                <div class="panel-heading">
+                    <h2>Login</h2>
+                    <span>POST /login</span>
+                </div>
+
+                <form id="login-form" class="form-stack">
+                    <label>
+                        Email
+                        <input name="email" type="email" placeholder="kalleb@email.com" required>
+                    </label>
+                    <label>
+                        Senha
+                        <input name="password" type="password" placeholder="123456" required>
+                    </label>
+                    <button type="submit">Entrar</button>
+                </form>
+            </article>
+
+            <article class="panel profile-panel">
+                <div class="panel-heading">
+                    <h2>Perfil</h2>
+                    <span>GET /perfil</span>
+                </div>
+
+                <div id="profile-box" class="profile-box">
+                    <span class="empty-state">Faca login para carregar o perfil.</span>
+                </div>
+
+                <div class="button-row">
+                    <button id="profile-button" type="button" class="secondary-button">Atualizar perfil</button>
+                    <button id="logout-button" type="button" class="danger-button">Sair</button>
+                </div>
+            </article>
+
+            <article class="panel response-panel">
+                <div class="panel-heading">
+                    <h2>Resposta</h2>
+                    <span>JSON</span>
+                </div>
+                <pre id="response-box">{}</pre>
+            </article>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
